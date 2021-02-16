@@ -29,7 +29,7 @@ def kick_watch():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     try:
-        print('###kick_watch:' + rsi1570_settings.port + ':' + str(rsi1570_settings.orderPrice))
+        print('###rsi1570_kick_watch:' + rsi1570_settings.port + ':' + str(rsi1570_settings.orderPrice))
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():

@@ -6,7 +6,7 @@ import time
 import rsi1570_settings
 
 def sendorder_entry():
-    print('###sendorderA1 -START-')
+    print('###rsi1570_sendorder_entry -START-')
     obj = { 'Password': rsi1570_settings.password,
             'Symbol': rsi1570_settings.symbol,
             'Exchange': 1,
@@ -29,7 +29,7 @@ def sendorder_entry():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     try:
-        print('###sendorder_entry')
+        print('###rsi1570_sendorder_entry')
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():

@@ -13,7 +13,7 @@ def board2():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     try:
-        print('###kabusapi_boardA1')
+        print('###rsi1570_board2')
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():

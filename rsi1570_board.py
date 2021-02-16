@@ -17,8 +17,6 @@ def board():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     curPriceList = []
-#    conn = sqlite3.connect('C:/data/sqlite-tools/mydb.sqlite3', uri=True)
-#   cur = conn.cursor()
 
     #標準偏差初期化
     std_val = 0
@@ -27,7 +25,7 @@ def board():
 
     while True:
         try:
-            print('###rsi1570_board.py')
+            print('###rsi1570_board')
             with urllib.request.urlopen(req) as res:
                 print(res.status, res.reason)
                 for header in res.getheaders():
@@ -42,9 +40,6 @@ def board():
                 curPriceList.append(curPrice)
                 print("curPrice")
                 print(curPrice)
-#                dt = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#                cur.execute("INSERT INTO t1570 VALUES (?,?,?,?)",(dt,curPrice,0,0))
-#                conn.commit()
 
                 #標準偏差用
                 list_for_std = curPriceList.copy()
@@ -65,9 +60,6 @@ def board():
                     std_val = np.std(list_for_std)
                     print("std_val")
                     print(std_val)
-#                    cur.execute("update t1570 set valueStd=? where datetime=?",(std_val,dt))
-
-                   # if len(curPriceList) == 15:
 
                     #RSIを求める
                     delta_list = np.diff(curPriceList)
@@ -93,8 +85,6 @@ def board():
                     rsi =  up_list_mean / (up_list_mean + abs(down_list_mean)) * 100
                     print("rsi")
                     print(rsi)
- #                   cur.execute("update t1570 set valueRSI14=? where datetime=?",(rsi,dt))
- #                   conn.commit()
 
                     #閾値を超えたらフラグを立てる
                     if rsi > rsi1570_settings.rsi_threshold and std_val > rsi1570_settings.sd_threshold:

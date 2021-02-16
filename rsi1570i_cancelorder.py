@@ -15,7 +15,7 @@ def cancelorder():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     try:
-        print('###cancelorder')
+        print('###rsi1570i_cancelorder')
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():

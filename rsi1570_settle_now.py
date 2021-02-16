@@ -28,7 +28,7 @@ def settle_now():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     try:
-        print('###sendorderA4')
+        print('###rsi1570_settle_now')
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():

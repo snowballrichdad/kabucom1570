@@ -16,10 +16,8 @@ def register():
     req.add_header('Content-Type', 'application/json')
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
-#    settings.stoptime = settings.stoptime + settings.interval
-
     try:
-        print('###register')
+        print('###rsi1570_register')
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():

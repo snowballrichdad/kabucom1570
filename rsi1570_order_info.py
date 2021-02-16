@@ -12,7 +12,7 @@ def orders_info():
     req.add_header('X-API-KEY', rsi1570_settings.token)
 
     try:
-        print('###orders_info')
+        print('###rsi1570_order_info')
         with urllib.request.urlopen(req) as res:
             print(res.status, res.reason)
             for header in res.getheaders():
