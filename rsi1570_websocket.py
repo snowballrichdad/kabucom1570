@@ -106,7 +106,7 @@ def websocketA1():
     nowtime = datetime.datetime.now()
     
     if nowtime < rsi1570_settings.stopOrderTime:
-        # ロスカットは2回したら終了
+        # ロスカットは1回以上したら終了
         if rsi1570_settings.lossCutCnt < 1:
             # 指定時間sleep後再び買い発注
             if rsi1570_settings.isAfterLossCut:

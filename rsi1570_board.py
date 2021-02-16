@@ -54,8 +54,6 @@ def board():
                     print("list_for_std after del")
                     print(list_for_std)
 
-                    #1つ前の標準偏差値を退避
-                    pre_std_val = std_val
                     #標準偏差を求める
                     std_val = np.std(list_for_std)
                     print("std_val")
@@ -86,15 +84,15 @@ def board():
                     print("rsi")
                     print(rsi)
 
-                    #閾値を超えたらフラグを立てる
+                    #標準偏差が閾値を超えたらフラグを立てる
                     if rsi > rsi1570_settings.rsi_threshold and std_val > rsi1570_settings.sd_threshold:
                         threshold_over = True
                     
-                    #閾値を超えたのち、標準偏差が減少傾向になったらエントリ
-                    if threshold_over and pre_std_val > std_val:
+                    #標準偏差が閾値を超えたのち、閾値以下になったらエントリ
+                    if threshold_over and std_val < rsi1570_settings.sd_threshold:
                         # 指定時間を超えていたらエントリしない
                         nowtime = datetime.datetime.now()
-                        if nowtime > rsi1570_settings.morningStartTime and nowtime < rsi1570_settings.morningStopTime:
+                        if nowtime > rsi1570_settings.morningStartTime and nowtime < rsi1570_settings.stopOrderTime:
                             rsi1570_sendorder_entry.sendorder_entry()
 
                         break
