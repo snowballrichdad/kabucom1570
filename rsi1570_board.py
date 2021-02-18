@@ -91,7 +91,7 @@ def board():
                         threshold_over = True
                     
                     #標準偏差が閾値を超えたのち、標準偏差が減少傾向になったらエントリ
-                    if threshold_over and pre_std_val > std_val::
+                    if threshold_over and pre_std_val > std_val:
                         # 指定時間を超えていたらエントリしない
                         nowtime = datetime.datetime.now()
                         if nowtime > rsi1570_settings.morningStartTime and nowtime < rsi1570_settings.stopOrderTime:
