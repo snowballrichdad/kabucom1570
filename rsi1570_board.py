@@ -35,7 +35,8 @@ def board():
                 pprint.pprint(content)
                 curPrice = content["CurrentPrice"]
                 if curPrice is None:
-                    curPrice = content["PreviousClose"]
+                    #現在値が取れない場合はまだ相場が開いてないのでスキップ
+                    continue
                 
                 curPriceList.append(curPrice)
                 print("curPrice", end = ":")

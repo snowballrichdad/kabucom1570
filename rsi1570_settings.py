@@ -25,7 +25,7 @@ morningStopTime = nowtime.replace(hour=11, minute=00)
 lossCutCnt = 0
 isAfterLossCut = False
 
-rsi_threshold = 70.0
+rsi_threshold = 60.0
 sd_threshold = 100.0
 
 if len(sys.argv) >= 2:
